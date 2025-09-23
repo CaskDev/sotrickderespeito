@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Trick de Respeito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: 'PixoReto';
+      src: url('https://fonts.cdnfonts.com/s/85546/PixoReto-0Wonv.woff') format('woff');
+    }
+    
+    @font-face {
+      font-family: 'DonGraffiti';
+      src: url('https://fonts.cdnfonts.com/s/85549/DonGraffiti-vmBZz.woff') format('woff');
+    }
+    
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #1a1a1a;
+      --dark-gray: #333333;
+      --accent: #ff5500;
+      --accent2: #00a8ff;
+      --street-yellow: #ffcc00;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%231a1a1a" stroke-width="1"/></svg>');
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'DonGraffiti', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background: var(--black);
+      color: var(--white);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo img {
+      height: 60px;
+      filter: drop-shadow(0 0 5px var(--accent));
+    }
+    
+    .logo h1 {
+      font-size: 2rem;
+      color: var(--white);
+      text-shadow: 2px 2px 0 var(--accent), 4px 4px 0 #000;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
+      font-family: 'PixoReto', sans-serif;
+      font-size: 1.1rem;
+    }
+    
+    nav a:hover {
+      color: var(--accent);
+    }
+    
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover:after {
+      width: 100%;
+    }
+    
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23000"/><path d="M20,20 L180,180 M180,20 L20,180" stroke="%23333" stroke-width="2"/></svg>');
+      color: var(--white);
+      padding: 8rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff5500" stroke-width="2" stroke-dasharray="5,5"/></svg>');
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .hero h2 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 3px 3px 0 #000, 6px 6px 0 var(--accent);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 2px;
+    }
+    
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      font-family: 'PixoReto', sans-serif;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .naoeocask {
+        color: var(--accent2);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+    
+    .naoeocask:hover {
+        color: var(--street-yellow);
+        text-shadow: 0 0 5px var(--accent2);
+    }
+    
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 3rem;
+      text-shadow: 2px 2px 0 #000, 4px 4px 0 var(--accent);
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 5px;
+      background: var(--accent);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    
+    .quem-somos {
+      background: var(--gray);
+      border-top: 3px solid var(--accent);
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    .quem-somos:before {
+      content: "RESPEITO";
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      font-size: 8rem;
+      color: rgba(255,255,255,0.03);
+      font-family: 'DonGraffiti', sans-serif;
+      transform: translateY(-50%) rotate(-10deg);
+      z-index: 0;
+    }
+    
+    .quem-somos-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .quem-somos p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border-left: 3px solid var(--accent2);
+      position: relative;
+    }
+    
+    .quem-somos p:before {
+      content: "»";
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    
+    .skatistas {
+      background: var(--black);
+      position: relative;
+    }
+    
+    .skatistas:before {
+      content: "SK8";
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      font-size: 10rem;
+      color: rgba(255,255,255,0.03);
+      font-family: 'DonGraffiti', sans-serif;
+      transform: rotate(15deg);
+      z-index: 0;
+    }
+    
+    .video-container {
+      position: relative;
+      z-index: 1;
+      border: 5px solid var(--accent);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255,85,0,0.3);
+    }
+    
+    .video-container:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 48%, rgba(255,85,0,0.1) 50%, transparent 52%);
+      background-size: 10px 10px;
+      pointer-events: none;
+    }
+    
+        .participe-pagina {
+    background: var(--gray);
+    text-align: center;
+    border-top: 3px dashed var(--accent);
+    border-bottom: 3px dashed var(--accent);
+    }
+
+    .participe-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    }
+
+    .participe-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-left: 5px solid var(--accent);
+    }
+        
+    .participe {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+    }
+    
+    .participe:before {
+      content: "PARTICIPE";
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      font-size: 6rem;
+      color: rgba(255,255,255,0.03);
+      font-family: 'DonGraffiti', sans-serif;
+      transform: rotate(5deg);
+      z-index: 0;
+    }
+    
+    .participe p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border: 1px solid var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--black);
+      padding: 12px 30px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 0;
+      transition: all 0.3s;
+      border: 2px solid var(--accent);
+      font-family: 'PixoReto', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--black);
+      transition: all 0.3s;
+      z-index: -1;
+    }
+    
+    .btn:hover {
+      color: var(--accent);
+    }
+    
+    .btn:hover:before {
+      left: 0;
+    }
+    
+    .contato {
+      background: var(--gray);
+      color: var(--white);
+      text-align: center;
+      border-top: 3px solid var(--accent);
+    }
+    
+    .contato .section-title {
+      color: var(--white);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.5);
+      border: 2px solid var(--accent2);
+    }
+    
+    .social-link:hover {
+      background: var(--accent2);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-weight: bold;
+    }
+    
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 3px solid var(--accent);
+      position: relative;
+    }
+    
+    footer:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, transparent, transparent 10px, var(--accent2) 10px, var(--accent2) 20px);
+    }
+    
+    .spray-effect {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,85,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(5px);
+      z-index: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .quem-somos:before, .skatistas:before, .participe:before {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="spray-effect" style="top: 10%; left: 5%;"></div>
+  <div class="spray-effect" style="top: 60%; right: 10%; background: radial-gradient(circle, rgba(0,168,255,0.2) 0%, transparent 70%);"></div>
+  <div class="spray-effect" style="bottom: 20%; left: 15%; background: radial-gradient(circle, rgba(255,204,0,0.2) 0%, transparent 70%);"></div>
+  
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="img/log0.png" alt="So Trick de Respeito">
+        <h1>SO TRICK DE RESPEITO</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#quem-somos">Quem Somos</a></li>
+          <li><a href="#skatistas">Skatistas</a></li>
+          <li><a href="#participe-pagina">Participe</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>SKATE É ATITUDE, RESISTÊNCIA E ESTILO!</h2>
+      <p>Uma pagina dedicada à cultura do skate de rua e à voz das quebradas</p>
+    </div>
+  </section>
+
+  <section id="quem-somos" class="quem-somos">
+    <div class="container">
+      <h2 class="section-title">QUEM SOMOS</h2>
+      <div class="quem-somos-content">
+        <p>Em meio ao concreto das periferias, onde o asfalto quente encontra a vontade de voar, nasceu o <strong>So Trick de Respeito</strong>. Nossa história começa com um grupo de jovens que encontrou no skate não apenas um esporte, mas uma forma de resistência.</p>
+        
+        <p>Em uma cidade que muitas vezes nos vira as costas, as rodinhas do skate se tornaram nossa voz. Cada queda, cada ralado no joelho, cada obstáculo superado era uma metáfora da nossa luta diária. O skate nos ensinou que cair faz parte, mas levantar é obrigatório.</p>
+        
+        <p>Nosso coletivo surgiu da necessidade de criar um espaço onde a cultura do skate de rua pudesse florescer longe dos holofotes comerciais. Um lugar onde o respeito pela arte, pela comunidade e pela história do skate fossem os verdadeiros valores.</p>
+        
+        <p>Hoje, somos uma família que cresce a cada rolê, cada encontro nas pichações de concreto que chamamos de picos. Representamos aqueles que usam o skate como ferramenta de transformação, quebrando barreiras sociais e provando que nas quebradas também se constroem sonhos sobre quatro rodinhas.</p>
+        
+        <p><strong>So Trick de Respeito</strong> - porque skate não é só manobra, é atitude!</p>
+      </div>
+    </div>
+  </section>
+
+    <section id="skatistas" class="skatistas">
+    <div class="container">
+      <h2 class="section-title">SKATISTAS</h2>
+      <div class="video-container">
+        <video src="img/skatistas.mp4" controls autoplay muted loop playsinline style="width:100%; height:auto;"></video>
+      </div>
+    </div>
+  </section>
+
+<section id="participe-pagina" class="participe-pagina">
+  <div class="container">
+    <h2 class="section-title">FAZ PARTE DA QUEBRADA</h2>
+    <div class="participe-content">
+      <p>O <strong>So Trick de Respeito</strong> é a voz do skate das periferias. Aqui, cada rolê tem história, cada pico tem identidade e cada skatista tem seu valor.</p>
+      
+      <p>Nossa página é o reflexo do skate real - sem firula, sem patrocínio milionário. É o registro da rua, dos picos abandonados, da galera que constrói o movimento com suor e ralado no joelho.</p>
+      
+      <p>Quer fazer parte dessa roda? Manda seu vídeo, tua história, teu corre. Aqui toda trick tem respeito, não importa se é frontside ou se é o primeiro ollie.</p>
+      
+    <a href="https://wa.me/11978863353?text=Quero%20participar%20da%20página%20@sotrickderespeito" class="btn">
+    PARTICIPE DA PÁGINA
+    </a>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="contato" class="contato">
+    <div class="container">
+      <h2 class="section-title">CONTATO</h2>
+      <p>Entre em contato conosco pelas nossas redes sociais</p>
+      <div class="social-links">
+        <a href="https://wa.me/11978863353" class="social-link" target="_blank">
+          <span class="social-icon"><i class="fab fa-whatsapp"></i></span>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/sotrickderespeito/" class="social-link" target="_blank">
+          <span class="social-icon"><i class="fab fa-instagram"></i></span>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+        <p>&copy; SOTRICKDERESPEITO desenvolved By 
+        <a href="https://www.instagram.com/naoeocask/" target="_blank" class="naoeocask">NaoeoCasK</a>!
+        </p>    
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroTitle = document.querySelector('.hero h2');
+      if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+          if (i < text.length) {
+            heroTitle.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+          }
+        };
+        
+        setTimeout(typeWriter, 500);
+      }
+    });
+  </script>
+</body>
+</html>
