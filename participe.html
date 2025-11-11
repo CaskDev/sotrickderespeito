@@ -597,9 +597,13 @@
     </div>
   </footer>
 
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('participateForm');
+      
+      function isMobile() {
+          return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      }
       
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -611,7 +615,7 @@
           data[key] = value;
         }
         
-        let message = `*QUERO PARTICIPAR DA PAGINA - SO TRICK DE RESPEITO*%0A%0A`;
+        let message = `*NOVA INSCRIÇÃO - SO TRICK DE RESPEITO*%0A%0A`;
         message += `*Nome:* ${data.nome}%0A`;
         message += `*Idade:* ${data.idade} anos%0A`;
         message += `*Instagram:* @${data.instagram}%0A`;
@@ -625,28 +629,34 @@
         message += `*Skate na rua e preconceito:*%0A${data.skateRua}%0A%0A`;
         message += `*Patrocínio:*%0A${data.patrocinio}%0A%0A`;
         message += `*Skatistas para conhecer:*%0A${data.skatistasConhecer}%0A%0A`;
-        message += `*Recado/Frase de impacto:*%0A${data.recado}%0A%0A`;
+        message += `*Recado/Frase de impacto:*%0A"${data.recado}"%0A%0A`;
         message += `*Música chave:* ${data.musica}%0A%0A`;
-                
+        
         const phoneNumber = "5511978863353";
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
         
-        window.open(whatsappUrl, '_blank');
+        const submitBtn = form.querySelector('.btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'ABRINDO WHATSAPP...';
+        submitBtn.disabled = true;
         
-        alert('Formulário enviado! Agora você será redirecionado para o WhatsApp para finalizar o envio.');
-      });
-      
-      const fileInput = document.getElementById('midia');
-      const fileUploadBtn = document.querySelector('.file-upload-btn');
-      
-      fileInput.addEventListener('change', function() {
-        if (this.files && this.files[0]) {
-          fileUploadBtn.textContent = this.files[0].name;
-        } else {
-          fileUploadBtn.textContent = 'ESCOLHER ARQUIVO';
-        }
+        setTimeout(function() {
+          if (isMobile()) {
+            window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+          } else {
+            window.open(`https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`, '_blank');
+          }
+          
+          setTimeout(function() {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            alert('✅ Formulário enviado! Agora é só confirmar o envio no WhatsApp.\n\nSe não abriu automaticamente:\n- Celular: Abra o WhatsApp e envie para 11 97886-3353\n- PC: Acesse web.whatsapp.com');
+            
+          }, 3000);
+          
+        }, 1000);
       });
     });
-  </script>
+</script>
 </body>
 </html>
