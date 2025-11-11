@@ -287,6 +287,7 @@
     }
     
     .btn {
+      margin-top: 30px;
       display: inline-block;
       background: var(--accent);
       color: var(--black);
@@ -626,9 +627,7 @@
         message += `*Skatistas para conhecer:*%0A${data.skatistasConhecer}%0A%0A`;
         message += `*Recado/Frase de impacto:*%0A${data.recado}%0A%0A`;
         message += `*Música chave:* ${data.musica}%0A%0A`;
-        
-        message += `_Arquivo anexado: ${document.getElementById('midia').files[0] ? document.getElementById('midia').files[0].name : 'Nenhum'}_`;
-        
+                
         const phoneNumber = "5511978863353";
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
         
