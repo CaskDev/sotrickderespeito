@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja So Trick de Respeito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="img/log0.png" alt="So Trick de Respeito">
+        <h1>LOJA SO TRICK DE RESPEITO</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">SóTrickDeRespeito</a></li>
+          <li><a href="#camisetas">Camisetas</a></li>
+          <li>
+            <button class="cart-icon-btn" id="cart-icon-btn">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h2>SóTrickDeRespeito</h2>
+      <p>Roupas com atitude das quebradas</p>
+    </div>
+  </section>
+
+  <!-- MODAL PREVIEW PRODUTO -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-content">
+      <button class="close-modal" id="close-modal">&times;</button>
+      
+      <div class="modal-image-container">
+        <img id="modal-image" src="" alt="Produto" class="modal-image">
+      </div>
+      
+      <div class="modal-info">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-price" id="modal-price"></p>
+        <p class="modal-description" id="modal-description"></p>
+        
+        <div class="modal-options">
+          <h3 class="option-title">Cor</h3>
+          <div class="color-options" id="modal-colors"></div>
+          
+          <h3 class="option-title">Tamanho</h3>
+          <div class="size-options" id="modal-sizes"></div>
+        </div>
+        
+        <div class="modal-actions">
+          <button class="modal-add-to-cart" id="modal-add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CARRINHO -->
+  <div class="cart-modal-overlay" id="cart-modal">
+    <div class="cart-modal-content">
+      <button class="close-modal" id="close-cart-modal">&times;</button>
+      
+      <div class="cart-modal-header">
+        <h2 class="cart-modal-title">Seu Carrinho</h2>
+      </div>
+      
+      <div class="cart-modal-body" id="cart-items">
+        <div class="empty-cart">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Seu carrinho está vazio</p>
+        </div>
+      </div>
+      
+      <div class="cart-modal-footer">
+        <div class="cart-total">
+          <h3>Total: R$ <span id="total-price">0.00</span></h3>
+        </div>
+        
+        <div class="customer-form">
+          <h3>Informações para Entrega</h3>
+          <input type="text" id="customer-name" placeholder="Seu nome completo" class="form-input">
+          <input type="tel" id="customer-phone" placeholder="WhatsApp (11) 99999-9999" class="form-input">
+          <input type="text" id="customer-address" placeholder="Endereço completo" class="form-input">
+        </div>
+
+        <div class="cart-modal-actions">
+          <button id="clear-cart" class="btn" style="background: var(--dark-gray);">Limpar Carrinho</button>
+          <button id="checkout-btn" class="btn">Finalizar Compra no WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMISETAS -->
+  <section id="camisetas" class="produtos">
+    <div class="container">
+      <h2 class="section-title">CAMISETAS</h2>
+      <div class="products-container" id="camisetas-container"></div>
+    </div>
+  </section>
+
+  <!-- BOTÃO FLUTUANTE APENAS INSTAGRAM -->
+  <div class="floating-buttons">
+    <a href="https://instagram.com/sotrickderespeito" 
+       class="float-btn instagram" 
+       target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; SOTRICKDERESPEITO - Loja Oficial</p>
+      <p style="font-size: 0.9rem; margin-top: 10px; color: #ccc;">
+        Desenvolvido por <a href="https://www.instagram.com/caskdev/" target="_blank" class="naoeocask">CaskDev</a>
+      </p>
+    </div>
+  </footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
