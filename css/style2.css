@@ -277,12 +277,31 @@
       padding: 20px;
     }
 
-    .product-title {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: var(--white);
-      font-weight: 600;
-    }
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--white);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .product-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-title {
+    font-size: 0.7rem;
+  }
+}
+
 
     .product-price {
       color: var(--accent);
